@@ -4,19 +4,8 @@
  #:use-module (lpi4a packages linux)
  #:use-module (lpi4a packages bootloaders)
  #:use-module (gnu packages certs)
- #:use-module (gnu packages tmux)
- #:use-module (gnu packages ssh)
  #:use-module (gnu packages curl)
- #:use-module (gnu packages admin)
- #:use-module (gnu packages networking)
- #:use-module (gnu packages linux)
- #:use-module (gnu packages rsync)
- #:use-module (gnu packages terminals)
- #:use-module (gnu packages ncurses)
- #:use-module (gnu packages ntp)
- #:use-module (gnu services networking)
- #:use-module (gnu services ssh)
- #:use-module (gnu services linux))
+ #:use-module (gnu packages admin))
 
 (define-public %lpi4a-os
 (operating-system
@@ -44,16 +33,11 @@
   (users %base-user-accounts)
   (packages
    (append
-    (list nss-certs le-certs tmux curl htop openssh rsync ntp strace
-          iperf lrzsz picocom tcpdump ncurses i2c-tools wpa-supplicant)
+    (list nss-certs le-certs lrzsz curl)
     %base-packages))
   (services
-   (append
-    (list
-     (service ntp-service-type)
-     (service openssh-service-type)
-     (service dhcp-client-service-type))
-    %base-services)))
+   %base-services))
 )
+
 
 %lpi4a-os
