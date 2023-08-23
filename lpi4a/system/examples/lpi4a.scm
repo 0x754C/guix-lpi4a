@@ -5,7 +5,7 @@
  (lpi4a packages bootloaders))
 (use-service-modules networking ssh linux)
 (use-package-modules certs tmux ssh curl admin networking linux rsync terminals
- ncurses)
+ ncurses ntp)
 
 (operating-system
   (host-name "lpi4a")
@@ -32,12 +32,13 @@
   (users %base-user-accounts)
   (packages
    (append
-    (list nss-certs le-certs tmux curl htop openssh rsync
-          iperf lrzsz picocom tcpdump ncurses i2c-tools)
+    (list nss-certs le-certs tmux curl htop openssh rsync ntp
+          iperf lrzsz picocom tcpdump ncurses i2c-tools wpa-supplicant)
     %base-packages))
   (services
    (append
     (list
+     (service ntp-service-type)
      (service openssh-service-type)
      (service dhcp-client-service-type))
     %base-services)))
