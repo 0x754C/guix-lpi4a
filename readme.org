@@ -1,0 +1,31 @@
+* guix system lpi4a support
+
+** add this repo into your channels.scm or use guix xxx -L${thisrepodir}
+
+** build install u-boot:
+
+#+BEGIN_SRC shell
+uboot=$(guix build u-boot-lpi4a)/libexec/u-boot-with-spl.bin
+sudo fastboot flash ram $uboot
+sudo fastboot reboot
+sudo fastboot flash uboot $uboot
+#+END_SRC
+
+** install blobs:
+
+```
+wget https://mirror.iscas.ac.cn/revyos/extra/images/lpi4a/20230810/boot-20230810-222415.ext4
+sudo fastboot flash boot boot-20230810-222415.ext4
+```
+
+** build & install system image:
+
+#+BEGIN_SRC shell
+dd if=`guix system image lpi4a/system/examples/lpi4a.scm -t raw-with-offset --target=riscv64-linux-gnu` bs=1M skip=1 of=rootfs.ext4
+sudo fastboot flash root rootfs.img
+#+END_SRC
+
+
+** bootup
+
+reset your board, then guix system is bootup.

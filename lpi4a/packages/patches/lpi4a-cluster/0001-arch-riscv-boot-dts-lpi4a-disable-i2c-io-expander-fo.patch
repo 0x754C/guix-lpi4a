@@ -1,0 +1,35 @@
+From a5f47f502d52e52389983ec4f1fc58693448ec0b Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Wed, 16 Aug 2023 17:55:33 +0800
+Subject: [PATCH] arch: riscv: boot: dts: lpi4a, disable i2c io expander for
+ usb hub
+
+---
+ arch/riscv/boot/dts/thead/light-lpi4a-ref.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+index 6901b23c3..c4c2758b0 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+@@ -223,7 +223,7 @@ reg_usb_hub_vdd1v2: regulator-hub-vdd12-en {
+ 		regulator-name = "regulator-hub-vdd12-en";
+ 		regulator-min-microvolt = <1200000>;
+ 		regulator-max-microvolt = <1200000>;
+-		gpio = <&pcal6408ahk_d 2 1>;
++		//gpio = <&pcal6408ahk_d 2 1>;
+ 		enable-active-high;
+ 		regulator-always-on;
+ 	};
+@@ -233,7 +233,7 @@ reg_usb_hub_vcc5v: regulator-hub-vcc5v-en {
+ 		regulator-name = "regulator-hub-vcc5v-en";
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+-		gpio = <&pcal6408ahk_d 3 1>;
++		//gpio = <&pcal6408ahk_d 3 1>;
+ 		enable-active-high;
+ 		regulator-always-on;
+ 	};
+-- 
+2.41.0
+

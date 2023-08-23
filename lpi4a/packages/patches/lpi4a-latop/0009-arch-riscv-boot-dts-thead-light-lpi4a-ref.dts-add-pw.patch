@@ -1,0 +1,40 @@
+From 717a9444ee2306e195f15cbd1d7ad26882231b52 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Tue, 8 Aug 2023 11:32:01 +0800
+Subject: [PATCH 9/9] arch/riscv/boot/dts/thead/light-lpi4a-ref.dts: add pwm
+ fan config
+
+---
+ arch/riscv/boot/dts/thead/light-lpi4a-ref.dts | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+index 32e13ca66..8c275198c 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+@@ -194,9 +194,10 @@ dummy_codec: dummy_codec {
+ 	fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+-		pwms = <&pwm 1 10000000 0>;
+-		cooling-levels = <0 64 192 255>;
+-		status = "disabled";
++		//pwms = <&pwm 1 10000000 0>;
++		pwms = <&pwm 1 1000000 0>;
++		cooling-levels = <128 64 32 0>;
++		status = "okay";
+ 	};
+ 
+ 	reg_vref_1v8: regulator-adc-verf {
+@@ -594,7 +595,7 @@ fan_config1: fan-trip1 {
+ 				};
+ 
+ 				fan_config2: fan-trip2 {
+-					temperature = <60000>;
++					temperature = <70000>;
+ 					hysteresis = <5000>;
+ 					type = "active";
+ 				};
+-- 
+2.41.0
+

@@ -1,0 +1,26 @@
+From 8e0558a9a8b95ddb4b09bdf1ac924676f3a9c3a2 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 21 Aug 2023 18:05:40 +0800
+Subject: [PATCH 4/4] revyos_defconfig: disable rtl8723ds, enable 8852bs
+
+---
+ arch/riscv/configs/revyos_defconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index 50a13b374..3e78f73c6 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -153,7 +153,8 @@ CONFIG_USB_USBNET=m
+ # CONFIG_USB_NET_AX8817X is not set
+ # CONFIG_USB_NET_AX88179_178A is not set
+ # CONFIG_USB_NET_NET1080 is not set
+-CONFIG_RTL8723DS=y
++# CONFIG_RTL8723DS is not set
++CONFIG_RTL8852BS=y
+ CONFIG_AIC_WLAN_SUPPORT=y
+ CONFIG_AIC_FW_PATH="/lib/firmware/aic8800"
+ CONFIG_AIC8800_WLAN_SUPPORT=m
+-- 
+2.41.0
+

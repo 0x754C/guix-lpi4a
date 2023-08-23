@@ -1,0 +1,32 @@
+From 7616eafbddc2dea20d478b52b53032a7be7bf011 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Tue, 8 Aug 2023 11:13:55 +0800
+Subject: [PATCH 8/8] arch/riscv/boot/dts/thead/light-lpi4a-ref.dts: add lid
+ button
+
+---
+ arch/riscv/boot/dts/thead/light-lpi4a-ref.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+index ab9c586c1..32e13ca66 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+@@ -265,6 +265,14 @@ gpio-keys {
+ 		compatible = "gpio-keys";
+ 		pinctrl-0 = <&pinctrl_volume>;
+ 		pinctrl-names = "default";
++
++		key-lid {
++			label = "lid status";
++			linux,code = <KEY_DISPLAY_OFF>;
++			debounce-interval = <1>;
++			gpios = <&gpio1_porta 5 0x1>;
++		};
++
+ 		key-volumedown {
+ 			label = "Volume Down Key";
+ 			linux,code = <KEY_VOLUMEDOWN>;
+-- 
+2.41.0
+

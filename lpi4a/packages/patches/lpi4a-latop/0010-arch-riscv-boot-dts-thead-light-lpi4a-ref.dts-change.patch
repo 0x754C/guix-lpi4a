@@ -1,0 +1,31 @@
+From 3519b6713756b5922fc422a00ef10e30f8e70a19 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Sat, 19 Aug 2023 10:19:10 +0800
+Subject: [PATCH 10/10] arch/riscv/boot/dts/thead/light-lpi4a-ref.dts: change
+ backlight level for latop
+
+---
+ arch/riscv/boot/dts/thead/light-lpi4a-ref.dts | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+index 8c275198c..c34c7984c 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-ref.dts
+@@ -32,8 +32,11 @@ display-subsystem {
+ 	lcd0_backlight: pwm-backlight@0 {
+ 		compatible = "pwm-backlight";
+ 		pwms = <&pwm 0 5000000>;
+-		brightness-levels = <0 4 8 16 32 64 128 255>;
+-		default-brightness-level = <7>;
++		brightness-levels = <0 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
++		20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
++		41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61
++		62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80>;
++		default-brightness-level = <54>;
+ 	};
+ 
+ 	light_iopmp: iopmp {
+-- 
+2.41.0
+

@@ -1,0 +1,25 @@
+From 16bcf4de6a4755c8feb2396316634baff1aa1b4d Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Wed, 23 Aug 2023 13:57:09 +0800
+Subject: [PATCH 1/2] configs: light_lpi4a_defconfig: replace n to not set
+
+---
+ configs/light_lpi4a_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/light_lpi4a_defconfig b/configs/light_lpi4a_defconfig
+index c7c96ebb..619cba09 100644
+--- a/configs/light_lpi4a_defconfig
++++ b/configs/light_lpi4a_defconfig
+@@ -31,7 +31,7 @@ CONFIG_CMD_SPI=y
+ CONFIG_CMD_I2C=y
+ CONFIG_CMD_MEMTEST=y
+ CONFIG_DDR_SCAN=y
+-CONFIG_DDR_PRBS_TEST=n
++# CONFIG_DDR_PRBS_TEST is not set
+ # CONFIG_DOS_PARTITION is not set
+ # CONFIG_ISO_PARTITION is not set
+ CONFIG_PARTITION_TYPE_GUID=y
+-- 
+2.41.0
+

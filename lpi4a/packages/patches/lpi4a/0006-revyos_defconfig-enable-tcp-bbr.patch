@@ -1,0 +1,27 @@
+From bbd9705b8de34c03ce56c9598a67984b86af27a0 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 21 Aug 2023 18:09:32 +0800
+Subject: [PATCH 6/6] revyos_defconfig: enable tcp bbr
+
+---
+ arch/riscv/configs/revyos_defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index b86ef7e94..a15f2a86c 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -70,6 +70,10 @@ CONFIG_IP_PNP=y
+ CONFIG_IP_PNP_DHCP=y
+ CONFIG_IP_PNP_BOOTP=y
+ CONFIG_IP_PNP_RARP=y
++CONFIG_TCP_CONG_ADVANCED=y
++CONFIG_TCP_CONG_BBR=y
++CONFIG_TCP_CONG_HSTCP=y
++CONFIG_TCP_CONG_CUBIC=y
+ CONFIG_NET_IPVTI=y
+ CONFIG_INET_ESP=y
+ CONFIG_NETFILTER=y
+-- 
+2.41.0
+
