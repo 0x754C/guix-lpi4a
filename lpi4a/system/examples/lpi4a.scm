@@ -32,7 +32,7 @@
   (users %base-user-accounts)
   (packages
    (append
-    (list nss-certs le-certs tmux curl htop openssh rsync ntp
+    (list nss-certs le-certs tmux curl htop openssh rsync ntp strace
           iperf lrzsz picocom tcpdump ncurses i2c-tools wpa-supplicant)
     %base-packages))
   (services
