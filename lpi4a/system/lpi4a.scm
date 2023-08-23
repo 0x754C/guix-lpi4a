@@ -1,12 +1,24 @@
-(use-modules
- (gnu)
- (gnu bootloader u-boot)
- (lpi4a packages linux)
- (lpi4a packages bootloaders))
-(use-service-modules networking ssh linux)
-(use-package-modules certs tmux ssh curl admin networking linux rsync terminals
- ncurses ntp)
+(define-module (lpi4a system lpi4a)
+ #:use-module (gnu)
+ #:use-module (gnu bootloader u-boot)
+ #:use-module (lpi4a packages linux)
+ #:use-module (lpi4a packages bootloaders)
+ #:use-module (gnu packages certs)
+ #:use-module (gnu packages tmux)
+ #:use-module (gnu packages ssh)
+ #:use-module (gnu packages curl)
+ #:use-module (gnu packages admin)
+ #:use-module (gnu packages networking)
+ #:use-module (gnu packages linux)
+ #:use-module (gnu packages rsync)
+ #:use-module (gnu packages terminals)
+ #:use-module (gnu packages ncurses)
+ #:use-module (gnu packages ntp)
+ #:use-module (gnu services networking)
+ #:use-module (gnu services ssh)
+ #:use-module (gnu services linux))
 
+(define-public %lpi4a-os
 (operating-system
   (host-name "lpi4a")
   (timezone "Hongkong")
@@ -42,3 +54,6 @@
      (service openssh-service-type)
      (service dhcp-client-service-type))
     %base-services)))
+)
+
+%lpi4a-os
