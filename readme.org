@@ -13,10 +13,10 @@ sudo fastboot flash uboot $uboot
 
 ** install blobs:
 
-```
+#+BEGIN_SRC shell
 wget https://mirror.iscas.ac.cn/revyos/extra/images/lpi4a/20230810/boot-20230810-222415.ext4
 sudo fastboot flash boot boot-20230810-222415.ext4
-```
+#+END_SRC
 
 ** build & install system image:
 
