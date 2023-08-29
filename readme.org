@@ -22,7 +22,7 @@ sudo fastboot flash boot boot-20230810-222415.ext4
 
 #+BEGIN_SRC shell
 dd if=`guix system image lpi4a/system/lpi4a.scm -t raw-with-offset --target=riscv64-linux-gnu` bs=1M skip=1 of=rootfs.ext4
-sudo fastboot flash root rootfs.img
+sudo fastboot flash root rootfs.ext4
 #+END_SRC
 
 
