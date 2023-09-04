@@ -2,6 +2,10 @@
 
 ** add this repo into your channels.scm or use guix xxx -L${thisrepodir}
 
+** know bugs
+
+https://github.com/wingo/fibers/issues/89
+
 ** build install u-boot:
 
 #+BEGIN_SRC shell
