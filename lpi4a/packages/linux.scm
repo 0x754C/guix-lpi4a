@@ -35,7 +35,8 @@
 
 (define-public %linux-lpi4a-cluster-patches
   (list
-   (local-file "patches/lpi4a-cluster/0001-arch-riscv-boot-dts-lpi4a-disable-i2c-io-expander-fo.patch")))
+   (local-file "patches/lpi4a-cluster/0001-arch-riscv-boot-dts-lpi4a-disable-i2c-io-expander-fo.patch")
+   (local-file "patches/lpi4a-cluster/0002-arch-riscv-boot-dts-light-lpi4a-ref-disable-audio.patch")))
 
 (define-public linux-lpi4a-cluster
   (package
