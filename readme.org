@@ -21,10 +21,10 @@ guix system build -L${thisrepodir}
 
       you must:
 
-      #+BEGIN_SRC shell
-	rmmod galcore
-	shutdown
-      #+END_SRC
+#+BEGIN_SRC shell
+rmmod galcore
+shutdown
+#+END_SRC
 
 ** build install u-boot:
 
