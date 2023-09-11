@@ -1,0 +1,77 @@
+From d73a28610b9a54d8f2b58a2a374a3568d5642017 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 11 Sep 2023 15:04:49 +0800
+Subject: [PATCH] riscv: dts: lpi4a-latop: enable dsi output
+
+---
+ .../boot/dts/thead/light-lpi4a-laptop.dts     | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+index 6fd283f63..9ae7629c6 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -18,3 +18,60 @@ key-lid {
+ 		};
+ 	};
+ };
++
++&dpu_enc0 {
++	status = "okay";
++
++	ports {
++		/* output */
++		port@1 {
++			reg = <1>;
++
++			enc0_out: endpoint {
++				remote-endpoint = <&dsi0_in>;
++			};
++		};
++	};
++};
++
++&dsi0 {
++        status = "okay";
++};
++
++&dhost_0 {
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++
++			dsi0_in: endpoint {
++				remote-endpoint = <&enc0_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++
++			dsi0_out: endpoint {
++				remote-endpoint = <&panel0_in>;
++			};
++		};
++	};
++
++	panel0@0 {
++		compatible = "chongzhou,cz101b4001", "jadard,jd9365da-h3";
++		reg = <0>;
++		backlight = <&lcd0_backlight>;
++		reset-gpio = <&pcal6408ahk_d 7 0>; /* active low */
++		hsvcc-supply = <&soc_vdd18_lcd0_en_reg>;  
++		vspn3v3-supply = <&soc_vdd33_lcd0_en_reg>;
++
++		port {
++			panel0_in: endpoint {
++				remote-endpoint = <&dsi0_out>;
++			};
++		};
++	};
++};
+-- 
+2.41.0
+

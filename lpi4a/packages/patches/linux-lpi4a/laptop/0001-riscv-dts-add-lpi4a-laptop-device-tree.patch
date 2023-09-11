@@ -1,0 +1,49 @@
+From a0821d98c0614f4a6a99da83369b638585c7b775 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 11 Sep 2023 13:41:18 +0800
+Subject: [PATCH] riscv: dts: add lpi4a laptop device tree
+
+---
+ arch/riscv/boot/dts/thead/Makefile            |  1 +
+ .../boot/dts/thead/light-lpi4a-laptop.dts     | 20 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+
+diff --git a/arch/riscv/boot/dts/thead/Makefile b/arch/riscv/boot/dts/thead/Makefile
+index c29c4b54f..ed488b671 100644
+--- a/arch/riscv/boot/dts/thead/Makefile
++++ b/arch/riscv/boot/dts/thead/Makefile
+@@ -41,3 +41,4 @@ dtb-$(CONFIG_SOC_THEAD) += light-a-val-android.dtb
+ dtb-$(CONFIG_SOC_THEAD) += fire-emu.dtb fire-emu-crash.dtb
+ dtb-$(CONFIG_SOC_THEAD) += fire-emu-soc-base.dtb fire-emu-soc-c910x4.dtb fire-emu-gpu-dpu-dsi0.dtb fire-emu-vi-dsp-vo.dtb fire-emu-vi-vp-vo.dtb
+ dtb-$(CONFIG_SOC_THEAD) += fire-emu-soc-base-sec.dtb
++dtb-$(CONFIG_SOC_THEAD) += light-lpi4a-laptop.dtb
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+new file mode 100644
+index 000000000..6fd283f63
+--- /dev/null
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2023 Sipeed.
++ */
++
++#include "light-lpi4a.dts"
++
++/ {
++	model = "T-HEAD Light Lichee Pi 4A configuration for 8GB DDR board use on laptop";
++
++	power-keys {
++                compatible = "gpio-keys";
++		key-lid {
++			label = "lid status";
++			linux,code = <KEY_DISPLAY_OFF>;
++			debounce-interval = <1>;
++			gpios = <&gpio1_porta 5 0x1>;
++		};
++	};
++};
+-- 
+2.41.0
+

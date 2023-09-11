@@ -1,0 +1,27 @@
+From d1d0510ab16d4662fbe29b134cfb3bb55acec2c0 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 21 Aug 2023 18:04:41 +0800
+Subject: [PATCH 2/2] revyos_defconfig: enable aic8800 wifi
+
+---
+ arch/riscv/configs/revyos_defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index 9660a0e9f..20ac6139b 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -160,6 +160,10 @@ CONFIG_USB_USBNET=m
+ # CONFIG_USB_NET_AX88179_178A is not set
+ # CONFIG_USB_NET_NET1080 is not set
+ CONFIG_RTL8723DS=y
++CONFIG_AIC_WLAN_SUPPORT=y
++CONFIG_AIC_FW_PATH="/lib/firmware/aic8800"
++CONFIG_AIC8800_WLAN_SUPPORT=m
++CONFIG_AIC8800_BTLPM_SUPPORT=m
+ CONFIG_INPUT_MOUSEDEV=y
+ CONFIG_INPUT_EVDEV=y
+ CONFIG_KEYBOARD_GPIO=y
+-- 
+2.41.0
+

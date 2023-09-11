@@ -1,0 +1,92 @@
+From 525e0d26c74a0afffb8f4cf07021a0f3355f0539 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 11 Sep 2023 10:01:19 +0800
+Subject: [PATCH] riscv: dts: add cluster device tree
+
+---
+ arch/riscv/boot/dts/thead/Makefile            |  1 +
+ .../dts/thead/light-lpi4a-cluster-16gb.dts    | 26 +++++++++++++++++++
+ .../boot/dts/thead/light-lpi4a-cluster.dts    | 26 +++++++++++++++++++
+ 3 files changed, 53 insertions(+)
+ create mode 100644 arch/riscv/boot/dts/thead/light-lpi4a-cluster-16gb.dts
+ create mode 100644 arch/riscv/boot/dts/thead/light-lpi4a-cluster.dts
+
+diff --git a/arch/riscv/boot/dts/thead/Makefile b/arch/riscv/boot/dts/thead/Makefile
+index a9b5e424b..c29c4b54f 100644
+--- a/arch/riscv/boot/dts/thead/Makefile
++++ b/arch/riscv/boot/dts/thead/Makefile
+@@ -30,6 +30,7 @@ dtb-$(CONFIG_SOC_THEAD) += light-ant-ref.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-ant-discrete.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-beagle.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-lpi4a.dtb light-lpi4a-ddr2G.dtb light-lpi4a-16gb.dtb
++dtb-$(CONFIG_SOC_THEAD) += light-lpi4a-cluster.dtb light-lpi4a-cluster-16gb.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-a-ref.dtb light-a-ref-dsi0.dtb light-a-ref-dsi0-hdmi.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-b-ref.dtb
+ dtb-$(CONFIG_SOC_THEAD) += light-a-val-crash.dtb light-b-product-crash.dtb light-ant-ref-crash.dtb light-ant-discrete-crash.dtb
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-cluster-16gb.dts b/arch/riscv/boot/dts/thead/light-lpi4a-cluster-16gb.dts
+new file mode 100644
+index 000000000..3497c477e
+--- /dev/null
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-cluster-16gb.dts
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2023 Sipeed.
++ */
++
++#include "light-lpi4a-16gb.dts"
++
++/ {
++	model = "T-HEAD Light Lichee Pi 4A configuration for 16GB DDR board on Cluster";
++};
++
++&audio_i2c0 {
++	status = "disabled";
++};
++
++&audio_i2c1 {
++	status = "disabled";
++};
++
++&lightsound {
++	status = "disabled";
++};
++
++&reg_usb_hub_vdd1v2 {
++	/delete-property/ gpio;
++};
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-cluster.dts b/arch/riscv/boot/dts/thead/light-lpi4a-cluster.dts
+new file mode 100644
+index 000000000..cfb6a476b
+--- /dev/null
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-cluster.dts
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2023 Sipeed.
++ */
++
++#include "light-lpi4a.dts"
++
++/ {
++	model = "T-HEAD Light Lichee Pi 4A configuration for 8GB DDR board on Cluster";
++};
++
++&audio_i2c0 {
++	status = "disabled";
++};
++
++&audio_i2c1 {
++	status = "disabled";
++};
++
++&lightsound {
++	status = "disabled";
++};
++
++&reg_usb_hub_vdd1v2 {
++	/delete-property/ gpio;
++};
+-- 
+2.41.0
+
