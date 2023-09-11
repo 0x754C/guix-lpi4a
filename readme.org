@@ -1,10 +1,30 @@
 * guix system lpi4a support
 
-** add this repo into your channels.scm or use guix xxx -L${thisrepodir}
+** how to use
+
+add this repo into your channels.scm or use:
+
+#+BEGIN_SRC shell
+guix system build -L${thisrepodir}
+#+END_SRC
 
 ** know bugs
 
-https://github.com/wingo/fibers/issues/89
+   1. if you use guile-fibers 1.3 in shepherd, shepherd will hang:
+      
+      https://github.com/wingo/fibers/issues/89
+
+      I fix this problem: lpi4a/packages/shepherd.scm
+      that a dirty fix :(, please wait upstream fix it.
+
+   2. galcore kernel module will block shepherd shutdown:
+
+      you must:
+
+      #+BEGIN_SRC shell
+	rmmod galcore
+	shutdown
+      #+END_SRC
 
 ** build install u-boot:
 
