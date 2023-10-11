@@ -1,0 +1,25 @@
+From f096941149f3c39f7dbfd5bf4a396d6a16c4b590 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 9 Oct 2023 18:17:17 +0800
+Subject: [PATCH] riscv: configs: revyos_defconfig: enable suspend
+
+---
+ arch/riscv/configs/revyos_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index 6a8cdd03a..789f32d93 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -48,7 +48,7 @@ CONFIG_CPU_FREQ_GOV_CONSERVATIVE=y
+ CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y
+ CONFIG_CPUFREQ_DT=y
+ CONFIG_RISV_THEAD_LIGHT_CPUFREQ=y
+-# CONFIG_SUSPEND is not set
++CONFIG_SUSPEND=y
+ CONFIG_PM=y
+ CONFIG_VIRTUALIZATION=y
+ CONFIG_KVM=y
+-- 
+2.35.8
+

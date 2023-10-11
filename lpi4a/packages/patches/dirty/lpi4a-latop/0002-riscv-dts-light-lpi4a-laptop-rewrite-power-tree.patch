@@ -1,0 +1,166 @@
+From 80e1d87f410d1adaa064c47070d625518795613a Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 25 Sep 2023 11:09:48 +0800
+Subject: [PATCH 2/2] riscv: dts: light-lpi4a-laptop: rewrite power tree
+
+---
+ .../boot/dts/thead/light-lpi4a-laptop.dts     | 126 ++++++++++++++++--
+ 1 file changed, 117 insertions(+), 9 deletions(-)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+index 9ae7629c6..be6243e61 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -4,19 +4,61 @@
+  */
+ 
+ #include "light-lpi4a.dts"
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
+ 
+ / {
+ 	model = "T-HEAD Light Lichee Pi 4A configuration for 8GB DDR board use on laptop";
+ 
+-	power-keys {
+-                compatible = "gpio-keys";
+-		key-lid {
+-			label = "lid status";
+-			linux,code = <KEY_DISPLAY_OFF>;
+-			debounce-interval = <1>;
+-			gpios = <&gpio1_porta 5 0x1>;
++	reg_sys_vcc_5v: regulator-sys-vcc-5v-en {
++		status = "okay";
++		compatible = "regulator-fixed";
++		regulator-name = "regulator-sys-vcc-5v-en";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		gpio = <&pcal6408ahk_c 0 1>;
++		enable-active-high;
++		regulator-boot-on;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++		regulator-state-standby {
++			regulator-off-in-suspend;
+ 		};
+ 	};
++
++	reg_sys_vcc_3v3: regulator-sys-vcc-3v3-en {
++		status = "okay";
++		compatible = "regulator-fixed";
++		regulator-name = "regulator-sys-vcc-3v3-en";
++		vin-supply = <&reg_sys_vcc_5v>;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++	};
++
++	reg_sys_vcc_1v8: regulator-sys-vcc-1v8-en {
++		status = "okay";
++		compatible = "regulator-fixed";
++		regulator-name = "regulator-sys-vcc-1v8-en";
++		vin-supply = <&reg_sys_vcc_5v>;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		enable-active-high;
++	};
++
++	reg_usb_vcc_5v: regulator-usb-vcc-5v-en {
++		status = "okay";
++		compatible = "regulator-fixed";
++		regulator-name = "regulator-usb-vcc-5v-en";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&reg_sys_vcc_5v>;
++		gpio = <&pcal6408ahk_d 3 1>;
++		enable-active-high;
++		regulator-boot-on;
++        };
+ };
+ 
+ &dpu_enc0 {
+@@ -65,8 +107,8 @@ panel0@0 {
+ 		reg = <0>;
+ 		backlight = <&lcd0_backlight>;
+ 		reset-gpio = <&pcal6408ahk_d 7 0>; /* active low */
+-		hsvcc-supply = <&soc_vdd18_lcd0_en_reg>;  
+-		vspn3v3-supply = <&soc_vdd33_lcd0_en_reg>;
++		hsvcc-supply = <&reg_sys_vcc_1v8>;
++		vspn3v3-supply = <&reg_sys_vcc_3v3>;
+ 
+ 		port {
+ 			panel0_in: endpoint {
+@@ -75,3 +117,69 @@ panel0_in: endpoint {
+ 		};
+ 	};
+ };
++
++&wcn_wifi {
++	WIFI,poweren_gpio = <&pcal6408ahk_c 4 0>;
++};
++
++
++&wcn_bt {
++	BT,power_gpio = <&pcal6408ahk_c 5 0>;
++};
++
++&i2c0 {
++	/delete-node/ pcal6408ahk_b;
++};
++
++&i2c1 {
++};
++
++&i2c3 {
++	touch@14 {
++		#gpio-cells = <2>;
++		compatible = "goodix,gt9271";
++		reg = <0x14>;
++		interrupt-parent = <&ao_gpio_porta>;
++		interrupts = <3 0>;
++		irq-gpios = <&ao_gpio_porta 3 0>;
++		reset-gpios = <&pcal6408ahk_d 0 0>;
++		touchscreen-size-x = <1024>;
++		touchscreen-size-y = <600>;
++		tp-size = <9271>;
++		status = "okay";
++       };
++};
++
++&usb_1 {
++	/delete-property/ vbus-supply;
++	/delete-property/ hub1v2-supply;
++	hub5v-supply = <&reg_usb_vcc_5v>;
++};
++
++&reg_usb_hub_vcc5v {
++	/delete-property/ gpio;
++};
++
++&soc_cam2_dvdd12_ir_reg {
++	/delete-property/ gpio;
++};
++
++&vvcam_sensor0 {
++	/delete-property/ sensor_rst;
++};
++
++&vvcam_sensor1 {
++	/delete-property/ sensor_rst;
++};
++
++&vvcam_sensor2 {
++	/delete-property/ sensor_rst;
++};
++
++&vvcam_sensor3 {
++	/delete-property/ sensor_rst;
++};
++
++&reg_tp_pwr_en {
++	/delete-property/ gpio;
++};
+-- 
+2.35.8
+

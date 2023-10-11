@@ -1,0 +1,24 @@
+From 5e1ae5e49b7ecadc9d9f4ece2fa89ccfadcc78d2 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 9 Oct 2023 18:11:11 +0800
+Subject: [PATCH] riscv: configs: revyos_defconfig: enable CW2015
+
+---
+ arch/riscv/configs/revyos_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index 9660a0e9f..6a8cdd03a 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -194,6 +194,7 @@ CONFIG_GPIO_DWAPB=y
+ CONFIG_GPIO_PCA953X=y
+ CONFIG_GPIO_PCA953X_IRQ=y
+ CONFIG_POWER_SUPPLY=y
++CONFIG_BATTERY_CW2015=y
+ CONFIG_SENSORS_MR75203=y
+ CONFIG_SENSORS_PWM_FAN=y
+ CONFIG_THERMAL=y
+-- 
+2.35.8
+

@@ -15,9 +15,10 @@
    (local-file "patches/linux-lpi4a/dsi/0001-drivers-panel-add-panel-jadard-jd9365da-h3.patch")
    (local-file "patches/linux-lpi4a/dsi/0002-revyos_defconfig-enable-panel-jadard-jd9365da-h3.patch")
 
-   (local-file "patches/linux-lpi4a/laptop/0001-riscv-dts-add-lpi4a-laptop-device-tree.patch")
-
-   (local-file "patches/linux-lpi4a/lpi4a/0001-revyos_defconfig-enable-nfs-kernel-server-support.patch")))
+   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-monitor.patch")
+   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-ip.patch")
+   (local-file "patches/linux-lpi4a/lpi4a/0001-riscv-configs-revyos_defconfig-enable-CW2015.patch")
+   (local-file "patches/linux-lpi4a/lpi4a/0001-riscv-configs-revyos_defconfig-enable-suspend.patch")))
    
 (define-public linux-lpi4a
   (package
@@ -29,11 +30,11 @@
 	      (method git-fetch)
 	      (uri (git-reference
 		    (url "https://github.com/revyos/thead-kernel")
-		    (commit "f72e7cd0775ba52da4380f034d1b51a44eb124e6")))
+		    (commit "052b22ef8baf010480c157e188e82fb6e3ebeee4")))
 	      (file-name (string-append "linux-thead-git"))
 	      (sha256
 	       (base32
-		"1pvgvx32sjb4psmryg63rpghqqqywrnhracx78svvirz4im9fdyz"))
+		"0i0bcdp721c80bnh8gx3300vlsdifjfx414h1c67f4lf8hqp6f68"))
 	      (patches
 	       %linux-lpi4a-patches))
 	     #:defconfig "revyos_defconfig"
@@ -42,7 +43,8 @@
 
 (define-public %linux-lpi4a-latop-patches
   (list
-   (local-file "patches/dirty/lpi4a-latop/0001-riscv-dts-lpi4a-latop-enable-dsi-output.patch")))
+   (local-file "patches/dirty/lpi4a-latop/0001-riscv-dts-lpi4a-latop-enable-dsi-output.patch")
+   (local-file "patches/dirty/lpi4a-latop/0002-riscv-dts-light-lpi4a-laptop-rewrite-power-tree.patch")))
 
 (define-public %linux-lpi4a-latop-7inch-patches
   (list
@@ -58,11 +60,11 @@
 	      (method git-fetch)
 	      (uri (git-reference
 		    (url "https://github.com/revyos/thead-kernel")
-		    (commit "f72e7cd0775ba52da4380f034d1b51a44eb124e6")))
+		    (commit "052b22ef8baf010480c157e188e82fb6e3ebeee4")))
 	      (file-name (string-append "linux-thead-git"))
 	      (sha256
 	       (base32
-		"1pvgvx32sjb4psmryg63rpghqqqywrnhracx78svvirz4im9fdyz"))
+		"0i0bcdp721c80bnh8gx3300vlsdifjfx414h1c67f4lf8hqp6f68"))
 	      (patches
 	       (append
 		%linux-lpi4a-patches
@@ -86,11 +88,11 @@
 	      (method git-fetch)
 	      (uri (git-reference
 		    (url "https://github.com/revyos/thead-kernel")
-		    (commit "f72e7cd0775ba52da4380f034d1b51a44eb124e6")))
+		    (commit "052b22ef8baf010480c157e188e82fb6e3ebeee4")))
 	      (file-name (string-append "linux-thead-git"))
 	      (sha256
 	       (base32
-		"1pvgvx32sjb4psmryg63rpghqqqywrnhracx78svvirz4im9fdyz"))
+		"0i0bcdp721c80bnh8gx3300vlsdifjfx414h1c67f4lf8hqp6f68"))
 	      (patches
 	       (append
 		%linux-lpi4a-patches
@@ -105,3 +107,5 @@
    linux-lpi4a linux-lpi4a-latop-7inch linux-lpi4a-latop-14inch))
 
 (packages->manifest %lpi4a-kernels)
+
+linux-lpi4a-latop-7inch

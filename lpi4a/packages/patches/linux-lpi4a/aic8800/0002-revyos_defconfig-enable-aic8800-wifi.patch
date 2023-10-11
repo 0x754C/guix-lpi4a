@@ -1,4 +1,4 @@
-From d1d0510ab16d4662fbe29b134cfb3bb55acec2c0 Mon Sep 17 00:00:00 2001
+From 2e15b7fbac78c1970ed4be43e2a02138ef403867 Mon Sep 17 00:00:00 2001
 From: Lu Hui <luhui@sipeed.com>
 Date: Mon, 21 Aug 2023 18:04:41 +0800
 Subject: [PATCH 2/2] revyos_defconfig: enable aic8800 wifi
@@ -8,7 +8,7 @@ Subject: [PATCH 2/2] revyos_defconfig: enable aic8800 wifi
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
-index 9660a0e9f..20ac6139b 100644
+index cb7f5ad0c..1993bfc36 100644
 --- a/arch/riscv/configs/revyos_defconfig
 +++ b/arch/riscv/configs/revyos_defconfig
 @@ -160,6 +160,10 @@ CONFIG_USB_USBNET=m
@@ -23,5 +23,5 @@ index 9660a0e9f..20ac6139b 100644
  CONFIG_INPUT_EVDEV=y
  CONFIG_KEYBOARD_GPIO=y
 -- 
-2.41.0
+2.35.8
 

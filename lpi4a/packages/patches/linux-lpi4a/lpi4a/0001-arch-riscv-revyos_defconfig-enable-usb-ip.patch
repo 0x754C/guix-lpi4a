@@ -1,0 +1,27 @@
+From 944c4f13bdb3a809ef695f9cc9226d180e164817 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Mon, 25 Sep 2023 18:56:06 +0800
+Subject: [PATCH] arch: riscv: revyos_defconfig: enable usb ip
+
+---
+ arch/riscv/configs/revyos_defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/riscv/configs/revyos_defconfig b/arch/riscv/configs/revyos_defconfig
+index d0f9b86e0..5e4e68c2f 100644
+--- a/arch/riscv/configs/revyos_defconfig
++++ b/arch/riscv/configs/revyos_defconfig
+@@ -289,6 +289,10 @@ CONFIG_USB_STORAGE_SDDR09=y
+ CONFIG_USB_STORAGE_SDDR55=y
+ CONFIG_USB_DWC3=m
+ CONFIG_USB_DWC3_HOST=y
++CONFIG_USBIP_CORE=m
++CONFIG_USBIP_VHCI_HCD=m
++CONFIG_USBIP_HOST=m
++CONFIG_USBIP_VUDC=m
+ # CONFIG_USB_DWC3_OF_SIMPLE is not set
+ CONFIG_USB_SERIAL=m
+ CONFIG_USB_SERIAL_GENERIC=y
+-- 
+2.35.8
+
