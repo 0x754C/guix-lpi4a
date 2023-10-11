@@ -35,18 +35,6 @@
    (synopsis "firmware for rtl8723ds bluetooth")
    (description synopsis)))
 
-(define-public rtl8852bs-bt-fw
-  (package
-   (inherit aic8800-firmware)
-   (name "rtl8852bs-bt-fw")
-   (source
-    (local-file "blobs/rtl8852bs-bt-fw" #:recursive? #t))
-   (arguments
-    '(#:install-plan
-      '(("rtlbt" "lib/firmware/"))))
-   (synopsis "firmware for rtl8852bs bluetooth")
-   (description synopsis)))
-
 (define-public %lpi4a-firmwares
   (list
    aic8800-firmware rtl8723ds-bt-fw rtl8852bs-bt-fw))
