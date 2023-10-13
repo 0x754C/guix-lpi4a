@@ -2,10 +2,13 @@
  #:use-module (gnu packages)
  #:use-module (gnu packages linux)
  #:use-module (guix packages)
+ #:use-module (guix build-system linux-module)
  #:use-module (guix git-download)
  #:use-module (guix build utils)
  #:use-module (guix profiles)
- #:use-module (guix gexp))
+ #:use-module (guix gexp)
+ #:use-module ((guix licenses) #:prefix licenses:)
+ #:use-module (guix utils))
 
 (define-public %linux-lpi4a-patches
   (list
@@ -76,7 +79,8 @@
 
 (define-public %linux-lpi4a-latop-14inch-patches
   (list
-   (local-file "patches/dirty/lpi4a-latop-14inch/0001-drivers-14inch-screen-support.patch")))
+   (local-file "patches/dirty/lpi4a-latop-14inch/0001-drivers-14inch-screen-support.patch")
+   (local-file "patches/dirty/lpi4a-latop-14inch/0002-drm-i2c-add-lt8911-mipi2edp-chip-driver.patch")))
 
 (define-public linux-lpi4a-latop-14inch
   (package
@@ -107,5 +111,3 @@
    linux-lpi4a linux-lpi4a-latop-7inch linux-lpi4a-latop-14inch))
 
 (packages->manifest %lpi4a-kernels)
-
-linux-lpi4a-latop-7inch
