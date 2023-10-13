@@ -1,0 +1,41 @@
+From 942f73f7168b657936e7e93c07e92c914b6f06bd Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Fri, 13 Oct 2023 18:07:44 +0800
+Subject: [PATCH 3/3] arch: riscv: lpi4a-laptop: add lt8911 devicetree
+
+---
+ .../boot/dts/thead/light-lpi4a-laptop.dts      | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+index be6243e61..021bb9bb5 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -148,6 +148,24 @@ touch@14 {
+ 		tp-size = <9271>;
+ 		status = "okay";
+        };
++
++	lt8911@29 {
++		compatible = "lontium,lt8911exb";
++		reg = <0x29>;
++		lontium,pclk = <136000000>;
++		lontium,hact = <2160>;
++		lontium,vact = <1440>;
++		lontium,hbp = <80>;
++		lontium,hfp = <48>;
++		lontium,vbp = <14>;
++		lontium,vfp = <3>;
++		lontium,hs = <32>;
++		lontium,vs = <10>;
++		lontium,mipi_lane = <2>;
++		lontium,lane_cnt = <2>;
++		lontium,color = <1>; //Color Depth 0:6bit 1:8bit
++		lontium,test = <0>;
++	};
+ };
+ 
+ &usb_1 {
+-- 
+2.34.1
+

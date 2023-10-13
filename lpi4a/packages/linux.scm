@@ -47,7 +47,8 @@
 (define-public %linux-lpi4a-latop-patches
   (list
    (local-file "patches/dirty/lpi4a-latop/0001-riscv-dts-lpi4a-latop-enable-dsi-output.patch")
-   (local-file "patches/dirty/lpi4a-latop/0002-riscv-dts-light-lpi4a-laptop-rewrite-power-tree.patch")))
+   (local-file "patches/dirty/lpi4a-latop/0002-riscv-dts-light-lpi4a-laptop-rewrite-power-tree.patch")
+   (local-file "patches/dirty/lpi4a-latop/0003-arch-riscv-lpi4a-laptop-add-lt8911-devicetree.patch")))
 
 (define-public %linux-lpi4a-latop-7inch-patches
   (list
