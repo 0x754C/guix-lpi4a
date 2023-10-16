@@ -159,6 +159,7 @@ int main(int argc, char *argv[])
 	ewrite(i2c_fd, buf, 2);
 
 	int8_t x, y;
+	int xs, ys;
 
 	while (1) {
 		usleep(10000);
@@ -174,13 +175,23 @@ int main(int argc, char *argv[])
 					y = y >> 1;
 				}
 				if (buf[4] & (1 << 7)) {
-					x = -(x);
+					xs = 1;
+				} else {
+					xs = 0;
+				}
+				for (i = 0; i < x; i++) {
+					emit(uinput_fd, EV_REL, REL_X, (xs == 1 ? -1 : 1));
 				}
 				if (buf[5] & (1 << 7)) {
-					y = -(y);
+					ys = 1;
+				} else {
+					ys = 0;
 				}
-				emit(uinput_fd, EV_REL, REL_X, x);
-				emit(uinput_fd, EV_REL, REL_Y, y);
+				for (i = 0; i < y; i++) {
+					emit(uinput_fd, EV_REL, REL_Y, (ys == 1 ? -1 : 1));
+				}
+				//emit(uinput_fd, EV_REL, REL_X, x);
+				//emit(uinput_fd, EV_REL, REL_Y, y);
 				printf("%d %d\n", x, y);
 			}
 		}
