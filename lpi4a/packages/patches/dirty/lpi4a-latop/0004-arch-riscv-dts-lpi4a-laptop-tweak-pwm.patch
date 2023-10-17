@@ -1,0 +1,33 @@
+From b08b69a25e17c7c2979a882e1d047ea1aa70eb36 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Tue, 17 Oct 2023 09:26:26 +0800
+Subject: [PATCH 4/4] arch: riscv: dts: lpi4a-laptop: tweak pwm
+
+---
+ arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+index 021bb9bb5..b8dd9f5e2 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -201,3 +201,16 @@ &vvcam_sensor3 {
+ &reg_tp_pwr_en {
+ 	/delete-property/ gpio;
+ };
++
++&lcd0_backlight {
++	pwms = <&pwm 0 191000>;
++	brightness-levels = <0 1 2 3 4 5 10 15 20 25 30 35 40 45 50
++			55 60 65 70 75 80 85 90 95 100 105 110 115
++			120 125 135 140>;
++	default-brightness-level = <30>;
++};
++
++&fan {
++	pwms = <&pwm 1 10000000 0>;
++	cooling-levels = <0 64 192 255>;
++};
+-- 
+2.34.1
+
