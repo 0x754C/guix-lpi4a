@@ -37,6 +37,6 @@
 
 (define-public %lpi4a-firmwares
   (list
-   aic8800-firmware rtl8723ds-bt-fw rtl8852bs-bt-fw))
+   aic8800-firmware rtl8723ds-bt-fw))
 
 (packages->manifest %lpi4a-firmwares)
