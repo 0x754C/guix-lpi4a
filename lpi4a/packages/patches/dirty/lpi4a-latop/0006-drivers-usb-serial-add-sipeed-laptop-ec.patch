@@ -1,0 +1,53 @@
+From 46a8836b8f81c7a4edf6435b1c96c33ca55b1477 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Tue, 17 Oct 2023 16:23:51 +0800
+Subject: [PATCH 6/6] drivers: usb: serial: add sipeed laptop ec
+
+---
+ drivers/usb/serial/usb-serial-simple.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/usb/serial/usb-serial-simple.c b/drivers/usb/serial/usb-serial-simple.c
+index 4c6747889..c7f9f79e6 100644
+--- a/drivers/usb/serial/usb-serial-simple.c
++++ b/drivers/usb/serial/usb-serial-simple.c
+@@ -9,6 +9,7 @@
+  * Copyright (C) 2010 Zilogic Systems <code@zilogic.com>
+  * Copyright (C) 2013 Wei Shuai <cpuwolf@gmail.com>
+  * Copyright (C) 2013 Linux Foundation
++ * Copyright (C) 2023 Sipeed
+  */
+ 
+ #include <linux/kernel.h>
+@@ -117,6 +118,12 @@ DEVICE(suunto, SUUNTO_IDS);
+ 	{ USB_DEVICE(0x908, 0x0004) }
+ DEVICE(siemens_mpi, SIEMENS_IDS);
+ 
++/* Sipeed Laptop EC */
++#define SIPEED_EC_IDS()			\
++	{ USB_DEVICE(0x359f, 0x2081) }
++DEVICE(sipeed_ec, SIPEED_EC_IDS);
++
++
+ /* All of the above structures mushed into two lists */
+ static struct usb_serial_driver * const serial_drivers[] = {
+ 	&carelink_device,
+@@ -133,6 +140,7 @@ static struct usb_serial_driver * const serial_drivers[] = {
+ 	&hp4x_device,
+ 	&suunto_device,
+ 	&siemens_mpi_device,
++	&sipeed_ec_device,
+ 	NULL
+ };
+ 
+@@ -151,6 +159,7 @@ static const struct usb_device_id id_table[] = {
+ 	HP4X_IDS(),
+ 	SUUNTO_IDS(),
+ 	SIEMENS_IDS(),
++	SIPEED_EC_IDS(),
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(usb, id_table);
+-- 
+2.34.1
+
