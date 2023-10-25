@@ -11,7 +11,14 @@
  #:use-module (guix utils))
 
 (define-public %linux-lpi4a-patches
-  (list))
+  (list
+   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-monitor.patch")
+   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-ip.patch")
+   (local-file "patches/linux-lpi4a/lpi4a/0001-riscv-configs-revyos_defconfig-enable-CW2015.patch")
+   (local-file "patches/linux-lpi4a/dsi/0001-drivers-panel-add-panel-jadard-jd9365da-h3.patch")
+   (local-file "patches/linux-lpi4a/dsi/0002-revyos_defconfig-enable-panel-jadard-jd9365da-h3.patch")
+   (local-file "patches/linux-lpi4a/aic8800/0001-drivers-wireless-add-aic8800-support.patch")
+   (local-file "patches/linux-lpi4a/aic8800/0002-revyos_defconfig-enable-aic8800-wifi.patch")))
    
 (define-public linux-lpi4a
   (package
@@ -36,20 +43,14 @@
 
 (define-public %linux-lpi4a-latop-patches
   (list
-   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-monitor.patch")
-   (local-file "patches/linux-lpi4a/lpi4a/0001-arch-riscv-revyos_defconfig-enable-usb-ip.patch")
-   (local-file "patches/linux-lpi4a/lpi4a/0001-riscv-configs-revyos_defconfig-enable-CW2015.patch")
-   (local-file "patches/linux-lpi4a/lpi4a/0001-riscv-configs-revyos_defconfig-enable-suspend.patch")
-   (local-file "patches/linux-lpi4a/dsi/0001-drivers-panel-add-panel-jadard-jd9365da-h3.patch")
-   (local-file "patches/linux-lpi4a/dsi/0002-revyos_defconfig-enable-panel-jadard-jd9365da-h3.patch")
-   (local-file "patches/linux-lpi4a/aic8800/0001-drivers-wireless-add-aic8800-support.patch")
-   (local-file "patches/linux-lpi4a/aic8800/0002-revyos_defconfig-enable-aic8800-wifi.patch")
    (local-file "patches/dirty/lpi4a-latop/0001-riscv-dts-lpi4a-latop-enable-dsi-output.patch")
    (local-file "patches/dirty/lpi4a-latop/0002-riscv-dts-light-lpi4a-laptop-rewrite-power-tree.patch")
    (local-file "patches/dirty/lpi4a-latop/0003-arch-riscv-lpi4a-laptop-add-lt8911-devicetree.patch")
    (local-file "patches/dirty/lpi4a-latop/0004-arch-riscv-dts-lpi4a-laptop-tweak-pwm.patch")
    (local-file "patches/dirty/lpi4a-latop/0005-sound-codecs-es8156-limit-volume.patch")
-   (local-file "patches/dirty/lpi4a-latop/0006-drivers-usb-serial-add-sipeed-laptop-ec.patch")))
+   (local-file "patches/dirty/lpi4a-latop/0006-drivers-usb-serial-add-sipeed-laptop-ec.patch")
+   (local-file "patches/dirty/lpi4a-latop/0007-arch-riscv-dts-lpi4a-laptop-rewrite-audio-power.patch")
+   (local-file "patches/dirty/lpi4a-latop/0008-arch-riscv-dts-lpi4a-laptop-limit-cpu-freq.patch")))
 
 (define-public %linux-lpi4a-latop-7inch-patches
   (list
@@ -72,6 +73,7 @@
 		"0i0bcdp721c80bnh8gx3300vlsdifjfx414h1c67f4lf8hqp6f68"))
 	      (patches
 	       (append
+		%linux-lpi4a-patches
 		%linux-lpi4a-latop-patches
 		%linux-lpi4a-latop-7inch-patches)))
 	     #:defconfig "revyos_defconfig"
@@ -100,6 +102,7 @@
 		"0i0bcdp721c80bnh8gx3300vlsdifjfx414h1c67f4lf8hqp6f68"))
 	      (patches
 	       (append
+		%linux-lpi4a-patches
 		%linux-lpi4a-latop-patches
 		%linux-lpi4a-latop-14inch-patches)))
 	     #:defconfig "revyos_defconfig"

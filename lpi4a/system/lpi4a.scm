@@ -6,16 +6,9 @@
   #:use-module (lpi4a packages bootloaders)
   #:use-module (lpi4a packages shepherd)
   #:use-module (gnu packages certs)
-  #:use-module (gnu packages curl)
+  #:use-module (gnu packages busybox)
   #:use-module (gnu packages admin)
-  #:use-module (gnu packages tmux)
-  #:use-module (gnu packages networking)
-  #:use-module (gnu packages ntp)
-  #:use-module (gnu services networking)
-  #:use-module (gnu services ssh)
-  #:use-module (gnu services mcron)
   #:use-module (gnu services shepherd)
-  #:use-module (gnu services admin)
   )
 
 (define-public %lpi4a-os
@@ -51,25 +44,15 @@
       (supplementary-groups '("wheel" "dialout" "audio" "video")))
      %base-user-accounts))
    
-   (packages
-    (append
-     (list nss-certs le-certs lrzsz curl wpa-supplicant isc-dhcp
-	   tmux iperf stress-ng ntp)
-     %base-packages))
-   (services
-    (append
-     (list
-      (service dhcp-client-service-type)
-      (service openssh-service-type)
-      (service ntp-service-type))
-     %base-services))
+   (packages (list busybox nss-certs le-certs))
+   (services %base-services)
 
    (essential-services
     (modify-services
      (operating-system-default-essential-services this-operating-system)
      (shepherd-root-service-type config =>
       (shepherd-configuration
-       (shepherd shepherd-fix)))))
+       (shepherd shepherd-0.9)))))
 
    (name-service-switch %mdns-host-lookup-nss)))
 

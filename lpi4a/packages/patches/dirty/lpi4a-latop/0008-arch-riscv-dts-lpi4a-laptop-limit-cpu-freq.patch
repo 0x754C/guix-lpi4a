@@ -1,0 +1,81 @@
+From 818ecc90a20c6c1c1319ed6a0d7fe863550adb06 Mon Sep 17 00:00:00 2001
+From: Lu Hui <luhui@sipeed.com>
+Date: Thu, 19 Oct 2023 11:09:07 +0800
+Subject: [PATCH 8/8] arch: riscv: dts: lpi4a-laptop: limit cpu freq
+
+---
+ .../boot/dts/thead/light-lpi4a-laptop.dts     | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+
+diff --git a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+index 7df057d5a..68e0b896d 100644
+--- a/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
++++ b/arch/riscv/boot/dts/thead/light-lpi4a-laptop.dts
+@@ -237,3 +237,64 @@ &fan {
+ 	pwms = <&pwm 1 10000000 0>;
+ 	cooling-levels = <0 64 192 255>;
+ };
++
++&cpus {
++        c910_0: cpu@0 {
++                operating-points = <
++                        /* kHz    uV */
++                        300000  650000
++                        800000  700000
++                        1500000 800000
++                >;
++                light,dvddm-operating-points = <
++                        /* kHz   uV */
++                        300000  800000
++                        800000  800000
++                        1500000 800000
++                >;
++        };
++        c910_1: cpu@1 {
++                operating-points = <
++                        /* kHz    uV */
++                        300000  650000
++                        800000  700000
++                        1500000 800000
++                >;
++                light,dvddm-operating-points = <
++                        /* kHz   uV */
++                        300000  800000
++                        800000  800000
++                        1500000 800000
++                >;
++        };
++        c910_2: cpu@2 {
++
++                operating-points = <
++                        /* kHz    uV */
++                        300000  650000
++                        800000  700000
++                        1500000 800000
++                >;
++                light,dvddm-operating-points = <
++                        /* kHz   uV */
++                        300000  800000
++                        800000  800000
++                        1500000 800000
++                >;
++        };
++        c910_3: cpu@3 {
++
++                operating-points = <
++                        /* kHz    uV */
++                        300000  650000
++                        800000  700000
++                        1500000 800000
++                >;
++                light,dvddm-operating-points = <
++                        /* kHz   uV */
++                        300000  800000
++                        800000  800000
++                        1500000 800000
++                >;
++        };
++};
+-- 
+2.34.1
+
