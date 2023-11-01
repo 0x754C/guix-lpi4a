@@ -50,7 +50,8 @@
    (local-file "patches/dirty/lpi4a-latop/0005-sound-codecs-es8156-limit-volume.patch")
    (local-file "patches/dirty/lpi4a-latop/0006-drivers-usb-serial-add-sipeed-laptop-ec.patch")
    (local-file "patches/dirty/lpi4a-latop/0007-arch-riscv-dts-lpi4a-laptop-rewrite-audio-power.patch")
-   (local-file "patches/dirty/lpi4a-latop/0008-arch-riscv-dts-lpi4a-laptop-limit-cpu-freq.patch")))
+   (local-file "patches/dirty/lpi4a-latop/0008-arch-riscv-dts-lpi4a-laptop-limit-cpu-freq.patch")
+   (local-file "patches/dirty/lpi4a-latop/0009-riscv-dtbf-lpi4a-latop-rewrite-backlight.patch")))
 
 (define-public %linux-lpi4a-latop-7inch-patches
   (list
