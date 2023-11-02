@@ -1,3 +1,7 @@
+* archived, new repo: https://github.com/0x754C/th1520-build
+
+guix riscv64 support is borken, I haven't time to fix it.
+
 * guix system lpi4a support
 
 ** how to use
